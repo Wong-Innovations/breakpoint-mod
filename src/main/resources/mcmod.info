@@ -1,13 +1,13 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "breakpoint",
+  "name": "Breakpoint",
+  "description": "A mod that adds closed timelike curves to Minecraft.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["CleanroomMC"],
+  "authorList": ["Wong-Innovations"],
   "credits": "Authors of this project",
   "logoFile": "",
   "screenshots": [],
