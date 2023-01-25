@@ -1,6 +1,7 @@
 package com.wonginnovations.timeloop;
 
 import net.minecraft.client.gui.GuiDisconnected;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -59,6 +60,16 @@ public class Timeloop {
             BackupManager.RESTORE_ON_CLOSE = true;
             loopEnded = true;
             FMLCommonHandler.instance().getMinecraftServerInstance().initiateShutdown();
+        } else if (event.world instanceof WorldServer && ((WorldServer) event.world).areAllPlayersAsleep()) {
+            long currentTime = event.world.getWorldTime();
+            long timeAfterSleep = (currentTime + 24000L) - (currentTime + 24000L) % 24000L;
+            if (CONFIG.getDimensionConfig(event.world.provider.getDimension()).loopEnd < timeAfterSleep) {
+                Timeloop.LOGGER.info("End of loop!");
+                event.world.setWorldTime(CONFIG.getDimensionConfig(event.world.provider.getDimension()).loopStart);
+                BackupManager.RESTORE_ON_CLOSE = true;
+                loopEnded = true;
+                FMLCommonHandler.instance().getMinecraftServerInstance().initiateShutdown();
+            }
         }
     }
 
