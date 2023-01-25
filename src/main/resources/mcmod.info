@@ -9,7 +9,7 @@
   "updateUrl": "",
   "authorList": ["Wong-Innovations"],
   "credits": "Authors of this project",
-  "logoFile": "",
+  "logoFile": "assets/time-loop-logo-dark.png",
   "screenshots": [],
   "dependencies": []
 }
